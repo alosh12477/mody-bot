@@ -2,7 +2,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters
 import random
 
-TOKEN = "7752755126:AAG09ZmcZ2J-MwVuWKxCcP9TVdEKKc2qfJc"
+TOKEN = 7752755126:AAFc2g8OqczJce0HeOtCloCkC03DCb3BHlU
 
 responses = [
     "آني متلهف موت أمارس وياك، خلي يدك تمسك يدّي، ونبدأ سوا 😩",
