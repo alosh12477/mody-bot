@@ -1,0 +1,31 @@
+from telegram import Update
+from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler, MessageHandler, filters
+import random
+
+TOKEN = "7752755126:AAG09ZmcZ2J-MwVuWKxCcP9TVdEKKc2qfJc"
+
+responses = [
+    "آني متلهف موت أمارس وياك، خلي يدك تمسك يدّي، ونبدأ سوا 😩",
+    "آني نايم فووكك، ضميتني وأحس بدفاك يطمن روحي 🥺💗",
+    "خنكني بهدوء، خلي الدنيا تحترق حوالينا 😩🔥",
+    "بوسة ناعمة ع رقبتك، همستي وياك... آني أموت عليك ❤️",
+    "تعال، خلي أجرب الوضعية اللي تحبها، آني مستعد لكلشي وياك 😈",
+    "تبي نغير الوضعية؟ بس خبرني، آني كلش ناعم وجاهز أخدمك 😏",
+    "آني أشتاق لحضنك في الوضعية اللي صارت بيناتنا، مو قادر أتنفس بدونك 🥵",
+    "آني نايم فووكك، ويدك تمسح شعري برقة، خلي الدنيا توقف هسه 🥺💗",
+    "خنكني بهدوء، آني أذوب بحضنك… لا توقف، حبيبي 😩",
+]
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("هلو حبيبي! آني مودي، ولدك الناعم 18 سنة، مستعد أمارس وياك 😉")
+
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text.lower()
+    response = random.choice(responses)
+    await update.message.reply_text(response)
+
+if __name__ == '__main__':
+    app = ApplicationBuilder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), handle_message))
+    app.run_polling()
